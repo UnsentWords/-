@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffdc5c" />
+  <meta name="description" content="奶蛙游戏合集：旅行奶蛙、奶蛙矿工、奶蛙街舞、奶蛙快跑、消消乐等 9 个入口，一个网页随时打开。" />
+  <title>奶蛙乐园｜9 个奶蛙游戏和页面一站直达</title>
+  <style>
+    :root { color-scheme: light; --ink:#392c22; --sub:#806f59; --line:#e9dfc8; --yellow:#ffd554; --green:#a5d26b; --paper:#fffdf5; --white:#fff; --shadow:0 14px 34px rgba(87,67,30,.08); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; background:radial-gradient(ellipse 70% 38% at 100% 0%,#fff2aa 0%,transparent 78%),linear-gradient(180deg,#fff9e9 0%,#fffdf7 48%,#fbf8ee 100%); min-height:100vh; }
+    button,input { font:inherit; }
+    button { cursor:pointer; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1120px,calc(100% - 38px)); margin:auto; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; padding:24px 0 10px; gap:16px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:950; font-size:18px; letter-spacing:-.6px; white-space:nowrap; }
+    .logo { width:38px; height:38px; background:var(--yellow); border:2px solid #594322; border-radius:14px; display:grid;place-items:center; transform:rotate(-7deg);box-shadow:3px 4px 0 #ead7a4; font-size:24px; }
+    .top-hint {font-size:12px;color:var(--sub);font-weight:600;}
+    .hero {margin-top:23px;min-height:310px;background:linear-gradient(117deg,#ffe270 0%,#ffe89b 55%,#f5efbe 100%);border:2px solid #e6c561;border-radius:34px;box-shadow:0 15px 0 #f3eac5,0 26px 45px rgba(128,104,25,.11);display:flex;align-items:center;position:relative;overflow:hidden;padding:38px 54px;isolation:isolate;}
+    .hero::before { content:""; position:absolute; width:440px; height:440px;border:3px dashed rgba(255,255,255,.55);right:-70px;top:-130px;border-radius:50%;z-index:-1;}
+    .hero::after {content:"";position:absolute;width:245px;height:245px;background:#fff9c9;opacity:.48;right:110px;bottom:-160px;border-radius:50%;z-index:-1;}
+    .hero-copy { z-index:1;max-width:600px; }
+    .eyebrow {display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:50px;background:rgba(255,255,255,.75);border:1px solid #eed68d;font-size:12px;font-weight:850;letter-spacing:.6px;}
+    h1 {font-weight:1000;font-size:clamp(35px,5vw,64px);line-height:1.16;letter-spacing:-2.5px;margin:17px 0 13px;}
+    h1 span {color:#8a5d2b;}
+    .subtitle { color:#6b5238;font-size:15px;line-height:1.9;margin:0 0 25px;font-weight:600; }
+    .hero-actions {display:flex;gap:10px;flex-wrap:wrap;}
+    .primary-btn,.secondary-btn {display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 19px;border-radius:15px;font-weight:900;border:2px solid #493522;transition:transform .18s,box-shadow .18s;}
+    .primary-btn {background:#392b23;color:#fff;box-shadow:4px 5px 0 #b79855;}
+    .secondary-btn {background:#fff9e7;box-shadow:4px 5px 0 #d9bd75;}
+    .primary-btn:hover,.secondary-btn:hover { transform:translateY(-2px); }
+    .frog-scene { flex:1; min-width:220px;height:250px;position:relative;display:grid;place-items:center;margin-left:12px; }
+    .sparkle {position:absolute;font-size:28px;animation:drift 3s ease-in-out infinite;}
+    .s1 {right:7%;top:9%;}.s2 {left:4%;top:22%;font-size:23px;animation-delay:.8s}.s3 {right:6%;bottom:14%;font-size:21px;animation-delay:1.2s}
+    .frog { position:relative;width:220px;height:198px;border-radius:46% 46% 42% 42% / 47% 47% 51% 51%;background:linear-gradient(138deg,#fff6a0,#eab63c 74%);border:4px solid #654724;box-shadow:inset -11px -17px 0 rgba(163,110,21,.13),14px 15px 0 rgba(128,81,12,.11); transform:rotate(-6deg);animation:hop 3s ease-in-out infinite; }
+    .frog .eye {position:absolute;top:43px;width:21px;height:28px;border-radius:50%;background:#4c3927;box-shadow:inset 4px 3px 0 rgba(255,255,255,.13);}
+    .frog .eye::after {content:"";position:absolute;left:5px;top:5px;width:7px;height:8px;background:white;border-radius:100%;}
+    .frog .eye.left {left:58px;}.frog .eye.right {right:58px;}
+    .frog .blush {position:absolute;top:105px;width:37px;height:19px;background:#f0a368;opacity:.78;border-radius:50%;}
+    .frog .blush.left {left:24px;}.frog .blush.right {right:24px;}
+    .frog .mouth {position:absolute;left:72px;top:100px;width:73px;height:50px;border-bottom:5px solid #654724;border-radius:0 0 50% 50%;}
+    .frog .shine {position:absolute;left:33px;top:24px;width:38px;height:18px;transform:rotate(-32deg);border-radius:50%;background:#fff9cc;opacity:.8;}
+    .scene-shadow {position:absolute;bottom:3px;width:180px;height:19px;background:#c6ac66;opacity:.35;border-radius:50%;filter:blur(6px);}
+    @keyframes hop {0%,100%{transform:translateY(0) rotate(-6deg)} 50%{transform:translateY(-11px) rotate(-4deg)}}
+    @keyframes drift {0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(14deg)}}
+    .section-head {display:flex;align-items:end;justify-content:space-between;gap:14px;margin:57px 0 20px;}
+    .section-head h2 {margin:0;font-size:clamp(24px,3vw,31px);letter-spacing:-.7px;}
+    .section-head p {margin:8px 0 0;color:var(--sub);font-size:14px;}
+    .counter {font-size:12px;font-weight:800;color:#725e45;background:#fff5d9;border:1px solid #ecdbb4;border-radius:100px;padding:9px 12px;white-space:nowrap;}
+    .toolbar {display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:21px;}
+    .tabs {display:flex;gap:7px;flex-wrap:wrap;}
+    .tab {border:1.5px solid #e9ddc5;background:#fffbf2;color:#705e48;padding:11px 16px;font-weight:850;border-radius:13px;transition:background .15s,color .15s;white-space:nowrap;}
+    .tab.active {background:#392b23;color:white;border-color:#392b23;}
+    .tab:focus-visible,.fav:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible {outline:3px solid #ffb72c;outline-offset:3px;}
+    .search {position:relative;min-width:min(100%,270px);flex:0 1 320px;}
+    .search input {width:100%;min-height:45px;padding:11px 16px 11px 43px;outline:none;border:1.5px solid #e9ddc5;background:#fffefa;border-radius:13px;color:var(--ink);}
+    .search input:focus {border-color:#ba9241;box-shadow:0 0 0 3px rgba(255,211,100,.28);}
+    .search .magnify {position:absolute;left:15px;top:12px;font-size:19px;pointer-events:none;}
+    .cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px;}
+    .card {min-height:288px;position:relative;border:1.5px solid var(--line);border-radius:24px;background:#fffefa;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .19s,box-shadow .19s,border-color .19s;}
+    .card:hover {transform:translateY(-5px);border-color:#d8bf87;box-shadow:0 19px 36px rgba(95,71,22,.14);}
+    .card-cover {height:124px;position:relative;display:grid;place-items:center;overflow:hidden;}
+    .card-cover::before,.card-cover::after {content:"";position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.5);width:200px;height:200px;right:-65px;top:-118px;}
+    .card-cover::after {width:120px;height:120px;left:-37px;top:62px;right:auto;}
+    .card-emoji {font-size:66px;line-height:1;z-index:1;transform:rotate(-5deg);filter:drop-shadow(2px 5px 0 rgba(80,55,20,.10));transition:transform .2s;}
+    .card:hover .card-emoji {transform:translateY(-4px) rotate(7deg) scale(1.08);}
+    .fav {position:absolute;right:14px;top:13px;z-index:2;width:36px;height:36px;display:grid;place-items:center;background:rgba(255,255,255,.8);border:1px solid rgba(110,85,36,.16);border-radius:50%;font-size:21px;color:#8a6b36;}
+    .fav.active {color:#cb782e;background:#fff5dd;}
+    .card-main {padding:20px 20px 18px;flex:1;display:flex;flex-direction:column;}
+    .kind {font-size:11px;letter-spacing:.7px;color:#987a48;font-weight:900;}
+    .card-title {margin:7px 0 7px;font-size:21px;font-weight:950;line-height:1.25;}
+    .desc {font-size:13px;line-height:1.7;color:#857560;margin:0;min-height:44px;}
+    .card-bottom {display:flex;align-items:center;justify-content:space-between;gap:5px;margin-top:auto;padding-top:16px;}
+    .domain {color:#aa9a85;font-size:11px;max-width:65%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .open {background:#fff0b9;color:#5a411d;border:1px solid #eed99b;padding:9px 12px;border-radius:11px;font-size:12px;font-weight:900;white-space:nowrap;transition:background .15s;}
+    .card:hover .open {background:#ffdb6d;}
+    .empty {text-align:center;background:#fff9e7;border:1.5px dashed #e6d2a8;padding:48px 20px;border-radius:21px;color:#8f7657;}
+    .empty strong {display:block;font-size:19px;color:var(--ink);margin:7px 0;}
+    .tip {display:flex;align-items:flex-start;gap:14px;margin:35px 0 55px;padding:19px 21px;border:1px solid #e9dfc4;border-radius:17px;background:#f8f5e8;color:#6d5b44;line-height:1.75;font-size:13px;}
+    .tip b {color:#4b3b29;}
+    footer {text-align:center;padding:8px 0 34px;color:#9b886d;font-size:12px;line-height:1.8;}
+    @media (max-width:850px) { .hero{padding:32px 32px;}.frog-scene{min-width:180px}.frog{transform:scale(.82);}.cards{grid-template-columns:repeat(2,minmax(0,1fr));} }
+    @media (max-width:600px) { .wrap{width:calc(100% - 28px)}.topbar{padding:18px 0 0}.top-hint{display:none}.hero{padding:28px 23px 12px;flex-direction:column;align-items:start;border-radius:25px;margin-top:22px;min-height:0}.hero-copy{width:100%}h1{font-size:43px;letter-spacing:-1.8px;margin:13px 0 9px}.subtitle{font-size:13px;margin-bottom:17px}.hero-actions{gap:8px}.primary-btn,.secondary-btn{font-size:13px;min-height:42px;padding:8px 12px}.frog-scene{align-self:center;width:100%;height:160px;min-width:0;margin:0}.frog{transform:scale(.70);animation:hopmobile 3s ease-in-out infinite}.scene-shadow{bottom:0}.sparkle{font-size:19px}.section-head{margin:45px 0 18px}.section-head p{font-size:12px}.toolbar{gap:12px;flex-direction:column;align-items:stretch}.tabs{gap:6px}.tab{flex:1;padding:9px 8px;font-size:12px}.search{flex:1;width:100%}.cards{gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}.card{min-height:268px;border-radius:17px}.card-cover{height:104px}.card-emoji{font-size:56px}.fav{right:9px;top:9px;width:30px;height:30px;font-size:18px}.card-main{padding:14px 12px 12px}.card-title{font-size:17px}.kind{font-size:10px}.desc{font-size:11px;line-height:1.55;min-height:48px}.domain{font-size:9px;max-width:52%}.open{font-size:11px;padding:8px}.card-bottom{padding-top:10px}.tip{padding:14px;gap:9px;margin:27px 0 36px;font-size:12px}.counter{font-size:11px} }
+    @media (max-width:360px) {.cards{grid-template-columns:1fr}.card{min-height:0}.desc{min-height:0}.hero h1{font-size:37px}}
+    @keyframes hopmobile {0%,100%{transform:translateY(0) scale(.7) rotate(-6deg)}50%{transform:translateY(-8px) scale(.7) rotate(-4deg)}}
+    @media (prefers-reduced-motion:reduce) {*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand"><div class="logo" aria-hidden="true">🐸</div><span>奶蛙乐园 <span style="font-size:11px;color:#9d8252">NAIWA LAND</span></span></div>
+      <div class="top-hint">一个收藏，快乐直达 ✦</div>
+    </header>
+    <main>
+      <section class="hero" aria-label="奶蛙游戏合集介绍">
+        <div class="hero-copy">
+          <span class="eyebrow">✨ 奶蛙快乐补给站 · 9 个精选入口</span>
+          <h1>欢迎来到<br><span>奶蛙乐园！</span></h1>
+          <p class="subtitle">旅行、挖矿、街舞、消消乐……<br>喜欢的奶蛙游戏和页面，都在这里。想玩就点开！</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#games">🎮 开始探索 <span aria-hidden="true">↗</span></a>
+            <button class="secondary-btn" id="random-btn" type="button">🎲 随机来一蛙</button>
+          </div>
+        </div>
+        <div class="frog-scene" aria-hidden="true">
+          <div class="sparkle s1">✦</div><div class="sparkle s2">✨</div><div class="sparkle s3">★</div>
+          <div class="scene-shadow"></div>
+          <div class="frog"><div class="shine"></div><div class="eye left"></div><div class="eye right"></div><div class="blush left"></div><div class="blush right"></div><div class="mouth"></div></div>
+        </div>
+      </section>
+      <section id="games" aria-label="游戏和页面导航">
+        <div class="section-head"><div><h2>🐸 奶蛙大集合</h2><p>选一个喜欢的，点击「立即进入」就能打开</p></div><div class="counter" id="count">共 9 个入口</div></div>
+        <div class="toolbar">
+          <nav class="tabs" aria-label="分类筛选">
+            <button class="tab active" type="button" data-filter="all" aria-pressed="true">全部 9</button>
+            <button class="tab" type="button" data-filter="game" aria-pressed="false">🎮 游戏 7</button>
+            <button class="tab" type="button" data-filter="other" aria-pressed="false">📚 资料 / 应用</button>
+            <button class="tab" type="button" data-filter="fav" aria-pressed="false">★ 收藏</button>
+          </nav>
+          <label class="search"><span class="magnify" aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索奶蛙游戏……" aria-label="搜索游戏和页面" autocomplete="off"/></label>
+        </div>
+        <div class="cards" id="cards" aria-live="polite"></div>
+        <div class="empty" id="empty" hidden><span style="font-size:34px">🐸</span><strong>没有找到这只奶蛙</strong>试试其他关键词，或者切回「全部」。</div>
+      </section>
+      <aside class="tip"><span aria-hidden="true" style="font-size:24px">💡</span><div><b>小提示：</b>点击卡片会在新标签页打开原网站，游戏进度仍由原网站保存。点 ★ 可以收藏喜欢的入口（只保存在当前浏览器）。在手机浏览器里将这个合集添加到主屏幕，下次就能像 App 一样一键进入。部分游戏需要网络，且能否游玩取决于原网站状态。</div></aside>
+    </main>
+    <footer>🐸 奶蛙乐园 · 非官方粉丝导航页<br>游戏及网页归各自作者所有 · 本站仅提供入口，不托管游戏内容</footer>
+  </div>
+  <script>
+    const games = [
+      {id:'travel', name:'奶蛙旅行', kind:'game', label:'休闲旅行', desc:'跟着奶蛙出发，开启一段有趣的旅行。', icon:'🧳', colors:['#cbe9d0','#e8f7c7'], url:'https://www.bilibili.com/toy/TravelMilkyFrog/index.html'},
+      {id:'miner', name:'奶蛙矿工', kind:'game', label:'矿工挑战', desc:'放下矿钩，把不同的奶蛙收入图鉴。', icon:'⛏️', colors:['#ffe1a3','#fff0cf'], url:'https://66970010-boop.github.io/frog-miner/'},
+      {id:'archive', name:'奶蛙档案', kind:'other', label:'资料档案', desc:'查看奶蛙资料与时间线，一起了解它。', icon:'📖', colors:['#d5dbfb','#eff0ff'], url:'https://www.naiwa.world/#timeline'},
+      {id:'app', name:'奶蛙手机软件', kind:'other', label:'手机应用', desc:'前往奶蛙网站，了解手机应用与下载入口。', icon:'📱', colors:['#fbd7e2','#fff0f1'], url:'https://milkyfrog.com/#app'},
+      {id:'dance', name:'奶蛙街舞', kind:'game', label:'音乐节奏', desc:'跟上节奏，看看奶蛙的精彩舞步。', icon:'🪩', colors:['#d6c8ff','#f2e9ff'], url:'https://nailong-dance.pages.dev/'},
+      {id:'merge', name:'合成大奶蛙', kind:'game', label:'趣味合成', desc:'动动脑筋，挑战合成更大的奶蛙。', icon:'🧩', colors:['#ffe0b6','#fff3db'], url:'https://yhsome.github.io/BigNaiWa/'},
+      {id:'run', name:'奶蛙快跑', kind:'game', label:'跑酷 / 更新公告', desc:'查看 7.0 更新消息和联机测试服入口。', icon:'🏃', colors:['#bdebf1','#e0f9f7'], url:'https://naiwa-kuaipao.pages.dev/?v'},
+      {id:'bump', name:'奶蛙鼓鼓碰', kind:'game', label:'欢乐碰撞', desc:'喝奶蓄力，碰撞全场的趣味小游戏。', icon:'🥛', colors:['#ffced2','#ffecef'], url:'https://naiwa-gugupeng.pages.dev/'},
+      {id:'match', name:'奶蛙消消乐', kind:'game', label:'轻松消除', desc:'点点消消，享受奶蛙消除小游戏。', icon:'🍬', colors:['#c3e8ad','#f0fbd9'], url:'https://chenckx0614.github.io/naiwaxxl/'}
+    ];
+    let filter = 'all';
+    let keyword = '';
+    let favorites = [];
+    try { favorites = JSON.parse(localStorage.getItem('naiwa-favorites') || '[]'); if(!Array.isArray(favorites)) favorites=[]; } catch(_){ favorites=[]; }
+    const container = document.getElementById('cards');
+    const empty = document.getElementById('empty');
+    const count = document.getElementById('count');
+    function render(){
+      const shown=games.filter(g=>{
+        const matchesCategory=filter==='all'||(filter==='fav'?favorites.includes(g.id):g.kind===filter);
+        return matchesCategory&&(g.name+' '+g.label+' '+g.desc).toLowerCase().includes(keyword);
+      });
+      container.replaceChildren();
+      for(const g of shown){
+        const card=document.createElement('article');
+        card.className='card';
+        const fav = favorites.includes(g.id);
+        card.innerHTML=`<div class="card-cover" style="background:linear-gradient(125deg,${g.colors[0]},${g.colors[1]})"><div class="card-emoji" aria-hidden="true">${g.icon}</div><button class="fav ${fav?'active':''}" type="button" aria-label="${fav?'取消收藏':'收藏'}${g.name}" aria-pressed="${fav}" title="${fav?'取消收藏':'收藏'}">${fav?'★':'☆'}</button></div><div class="card-main"><span class="kind">${g.label}</span><h3 class="card-title">${g.name}</h3><p class="desc">${g.desc}</p><div class="card-bottom"><span class="domain"></span><a class="open" target="_blank" rel="noopener noreferrer">立即进入 ↗</a></div></div>`;
+        card.querySelector('.domain').textContent = new URL(g.url).hostname;
+        card.querySelector('a').href = g.url;
+        card.querySelector('.fav').addEventListener('click',()=>{
+          favorites = favorites.includes(g.id) ? favorites.filter(id=>id!==g.id) : [...favorites,g.id];
+          try {localStorage.setItem('naiwa-favorites',JSON.stringify(favorites));} catch(_){}
+          render();
+        });
+        container.appendChild(card);
+      }
+      count.textContent=`显示 ${shown.length} / ${games.length} 个入口`;
+      empty.hidden=shown.length!==0;
+    }
+    document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+      filter=btn.dataset.filter;
+      document.querySelectorAll('.tab').forEach(t=>{t.classList.toggle('active',t===btn);t.setAttribute('aria-pressed',String(t===btn));});
+      render();
+    }));
+    document.getElementById('search').addEventListener('input',e=>{keyword=e.target.value.trim().toLowerCase();render();});
+    document.getElementById('random-btn').addEventListener('click',()=>{
+      const g=games[Math.floor(Math.random()*games.length)];
+      window.open(g.url,'_blank','noopener,noreferrer');
+    });
+    render();
+  </script>
+</body>
+</html>
